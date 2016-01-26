@@ -35,12 +35,12 @@ class spider(object):
             page_group.append(link)
         return page_group
 
-#geteveryclass用来抓取每个课程块的信息
+#geteveryclass用来抓取每个单元块的信息
     def geteveryclass(self,source):
         everyclass = re.findall(ur'相关文章</a><a href="http://.*?pdf',source,re.S)
         return everyclass
 
-#getinfo用来从每个课程块中提取出我们需要的信息
+#getinfo用来从每个单元块中提取出我们需要的信息
     def getinfo(self,eachclass):
         info = {}
         if re.search('http\:.*?\.pdf',eachclass,re.S) >= 0:
@@ -75,5 +75,3 @@ if __name__ == '__main__':
             info = baiduxueshu.getinfo(each)
             classinfo.append(info)
     baiduxueshu.saveinfo(classinfo)
-
-
